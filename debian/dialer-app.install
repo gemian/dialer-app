@@ -5,6 +5,7 @@ usr/share/dialer-app/*.qml
 usr/share/dialer-app/LiveCallPage
 usr/share/dialer-app/HistoryPage
 usr/share/dialer-app/DialerPage
+usr/share/dialer-app/Contacts
 usr/share/dialer-app/ContactsPage
 usr/share/dialer-app/ContactViewPage
 usr/share/dialer-app/ContactEditorPage
