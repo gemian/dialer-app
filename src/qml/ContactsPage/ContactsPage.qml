@@ -21,6 +21,7 @@ import Ubuntu.Components 1.3
 import Ubuntu.Components.ListItems 1.3 as ListItem
 import Ubuntu.Components.Popups 1.3
 import QtContacts 5.0
+import "../Contacts"
 
 Page {
     id: contactsPage

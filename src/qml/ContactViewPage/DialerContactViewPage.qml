@@ -22,11 +22,11 @@ import QtContacts 5.0
 
 import Ubuntu.Components 1.3
 import Ubuntu.Components.Popups 1.3 as Popups
-import Ubuntu.Contacts 0.1
 
 import Ubuntu.AddressBook.Base 0.1
 import Ubuntu.AddressBook.ContactView 0.1
 import Ubuntu.AddressBook.ContactShare 0.1
+import "../Contacts"
 
 ContactViewPage {
     id: root

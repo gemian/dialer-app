@@ -22,6 +22,7 @@ import Ubuntu.Components.ListItems 1.3 as ListItem
 import Ubuntu.History 0.1
 import Ubuntu.Telephony 0.1
 import "dateUtils.js" as DateUtils
+import "../Contacts"
 
 Page {
     id: historyPage
