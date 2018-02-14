@@ -46,7 +46,7 @@ Depends: ${misc:Depends},
          qml-module-qtcontacts,
          qml-module-qtquick2,
          qml-module-ofono,
-Description: Dialer application for Ubuntu
+Description: Dialer application
  An application to make phone calls
 
 Package: dialer-app-autopilot
