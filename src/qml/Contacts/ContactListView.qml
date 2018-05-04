@@ -491,7 +491,7 @@ FocusScope {
                         imageUrl: "image://theme/contact"
                     }
                 }
-                selected: pageStack.hasKeyboard
+                selected: true
                 visible: root.showNewContact
                 height: root.showNewContact ? defaultHeight : 0
                 onHeightChanged: {
