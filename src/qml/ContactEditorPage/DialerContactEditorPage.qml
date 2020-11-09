@@ -21,7 +21,7 @@ import QtContacts 5.0
 
 import Ubuntu.Components 1.3
 
-import Ubuntu.AddressBook.ContactEditor 0.1
+//import Ubuntu.AddressBook.ContactEditor 0.1
 
 ContactEditorPage {
     id: root

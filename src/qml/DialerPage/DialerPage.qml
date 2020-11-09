@@ -53,18 +53,6 @@ Page {
         property list<Action> actionsGreeter
         property list<Action> actionsNormal: [
             Action {
-                objectName: "favorite-selected"
-                iconName: "favorite-selected"
-                text: i18n.tr("Favorite Contacts")
-                onTriggered: pageStackNormalMode.push(Qt.resolvedUrl("../ContactsPage/ContactsPage.qml"), {"initialTab":"1", "initialState":"default"})
-            },
-            Action {
-                objectName: "contacts"
-                iconName: "contact"
-                text: i18n.tr("Contacts")
-                onTriggered: pageStackNormalMode.push(Qt.resolvedUrl("../ContactsPage/ContactsPage.qml"), { "initialTab":"0", "initialState":"searching"})
-            },
-            Action {
                 iconName: "settings"
                 text: i18n.tr("Settings")
                 onTriggered: pageStackNormalMode.push(Qt.resolvedUrl("../SettingsPage/SettingsPage.qml"))
@@ -174,19 +162,11 @@ Page {
                 target: contactLabel
                 visible: false
             }
-            PropertyChanges {
-                target: addContact
-                visible: false
-            }
         },
         State {
             name: "normalMode"
             PropertyChanges {
                 target: contactLabel
-                visible: true
-            }
-            PropertyChanges {
-                target: addContact
                 visible: true
             }
         }
@@ -292,30 +272,6 @@ Page {
             }
             height: page.compactView ? units.gu(7) : units.gu(10)
 
-            CustomButton {
-                id: addContact
-
-                anchors {
-                    left: parent.left
-                    verticalCenter: keypadEntry.verticalCenter
-                }
-                width: opacity > 0 ? (page.compactView ? units.gu(4) : units.gu(3)) : 0
-                height: (keypadEntry.value !== "" && contactWatcher.isUnknown) ? parent.height : 0
-                icon: "contact-new"
-                iconWidth: units.gu(3)
-                iconHeight: units.gu(3)
-                opacity: (keypadEntry.value !== "" && contactWatcher.isUnknown) ? 1.0 : 0.0
-
-                Behavior on opacity {
-                    UbuntuNumberAnimation { }
-                }
-
-                Behavior on width {
-                    UbuntuNumberAnimation { }
-                }
-
-                onClicked: mainView.addNewPhone(keypadEntry.value)
-            }
 
             KeypadEntry {
                 id: keypadEntry
@@ -324,7 +280,7 @@ Page {
                 anchors {
                     top: parent.top
                     topMargin: units.gu(3)
-                    left: addContact.right
+                    left: parent.left
                     right: backspace.left
                 }
                 focus: true
