@@ -8,7 +8,6 @@ Internals
 Dialer app relies on :
   - [telephony-service](https://github.com/ubports/telephony-service) for call relay.
   - [history-service](https://github.com/ubports/history-service) for call history
-  - [address-book-app](https://github.com/ubports/address-book-app) for contact search.
 
 
 
