@@ -1,3 +1,4 @@
+
 /*
  * Copyright (C) 2012-2013 Canonical, Ltd.
  *
@@ -25,6 +26,8 @@
 #include <QTemporaryFile>
 #include <QTextStream>
 #include <QQmlDebuggingEnabler>
+#include <QLockFile>
+#include <QProcess>
 
 // libc
 #include <cerrno>
@@ -42,6 +45,27 @@ int main(int argc, char** argv)
 {
     QGuiApplication::setApplicationName("Dialer App");
     DialerApplication application(argc, argv);
+
+    // Try to create lockfile
+    QLockFile lockFile("/tmp/dialerapp.lock");
+    if(!lockFile.tryLock(100)) {
+        if (lockFile.error() == QLockFile::LockFailedError) {
+            qint64 pid;
+            QString hostname;
+            QString appname;
+            if (lockFile.getLockInfo(&pid, &hostname, &appname)) {
+                // Kill original process and try again
+	        qDebug() << "Dialer App already running - pid" << pid;
+                QProcess::execute("kill " + QString::number(pid));
+            }
+        }
+
+        // Try to create lockfile, second attempt
+        if(!lockFile.tryLock(1000)) {
+            qDebug() << "Dialer App already running, can't stop it.";
+            return(0);
+        }
+    }
 
     if (!application.setup()) {
         return 0;
