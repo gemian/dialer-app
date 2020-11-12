@@ -22,6 +22,7 @@ import Qt.labs.settings 1.0
 import Ubuntu.Components 1.3
 import Ubuntu.Components.Popups 1.3
 import Ubuntu.Telephony 0.1
+import Ubuntu.Contacts 0.1
 
 MainView {
     id: mainView

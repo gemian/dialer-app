@@ -33,8 +33,8 @@ import Ubuntu.Components 1.3
 import Ubuntu.Components.ListItems 1.3 as ListItem
 import Ubuntu.Components.Popups 1.3
 import Ubuntu.Components.Themes.Ambiance 0.1
+import Ubuntu.Content 1.3
 import "callForwardingUtils.js" as Utils
-import "../Contacts"
 
 Page {
     id: page

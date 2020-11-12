@@ -22,11 +22,11 @@ import QtContacts 5.0
 
 import Ubuntu.Components 1.3
 import Ubuntu.Components.Popups 1.3 as Popups
+import Ubuntu.Contacts 0.1
 
-//import Ubuntu.AddressBook.Base 0.1
-//import Ubuntu.AddressBook.ContactView 0.1
-//import Ubuntu.AddressBook.ContactShare 0.1
-import "../Contacts"
+import Ubuntu.AddressBook.Base 0.1
+import Ubuntu.AddressBook.ContactView 0.1
+import Ubuntu.AddressBook.ContactShare 0.1
 
 ContactViewPage {
     id: root
@@ -55,7 +55,38 @@ ContactViewPage {
     }
 
     model: null
-    
+    headerActions: [
+        Action {
+            objectName: "share"
+            text: i18n.tr("Share")
+            iconName: "share"
+            onTriggered: {
+                pageStack.push(contactShareComponent,
+                               {contactModel: root.model, contacts: [root.contact]})
+            }
+        },
+        Action {
+            objectName: "edit"
+            text: i18n.tr("Edit")
+            iconName: "edit"
+            onTriggered: {
+                pageStack.push(contactEditorPageURL,
+                               { model: root.model,
+                                 contact: root.contact,
+                                 contactListPage: root.contactListPage })
+            }
+        }
+    ]
+
+    extensions: ContactDetailSyncTargetView {
+        contact: root.contact
+        anchors {
+            left: parent.left
+            right: parent.right
+        }
+        height: implicitHeight
+    }
+
     onContactRemoved: pageStack.pop()
     onActionTrigerred: {
         if ((action == "tel") || (action == "default")) {

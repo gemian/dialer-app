@@ -113,18 +113,18 @@ Page {
                 text: i18n.tr("Dialpad tones")
             }
 
-            //ListItem.Standard {
-            //    id: addAccount
-            //    visible: false // TODO: Finish enablement of SIP Online Account first
-            //    anchors {
-            //        left: parent.left
-            //        right: parent.right
-            //    }
-            //    text: i18n.tr("Add an online account")
-            //    progression: true
-            //    onClicked: onlineAccountHelper.item.run()
-            //    enabled: (onlineAccountHelper.status === Loader.Ready) && (onlineAccountHelper.item.count > 0)
-            //}
+            ListItem.Standard {
+                id: addAccount
+                visible: false // TODO: Finish enablement of SIP Online Account first
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                }
+                text: i18n.tr("Add an online account")
+                progression: true
+                onClicked: onlineAccountHelper.item.run()
+                enabled: (onlineAccountHelper.status === Loader.Ready) && (onlineAccountHelper.item.count > 0)
+            }
 
             Repeater {
                 model: telepathyHelper.voiceAccounts.all
@@ -149,11 +149,11 @@ Page {
         }
     }
 
-//    Loader {
-//        id: onlineAccountHelper
+    Loader {
+        id: onlineAccountHelper
 
-//        anchors.fill: parent
-//        asynchronous: true
-//        source: Qt.resolvedUrl("OnlineAccountsHelper.qml")
-//    }
+        anchors.fill: parent
+        asynchronous: true
+        source: Qt.resolvedUrl("OnlineAccountsHelper.qml")
+    }
 }

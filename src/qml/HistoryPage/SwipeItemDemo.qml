@@ -21,7 +21,7 @@ import QtQuick.Layouts 1.1
 import Qt.labs.settings 1.0
 
 import Ubuntu.Components 1.3
-import "../Contacts"
+import Ubuntu.Contacts 0.1
 
 Loader {
     id: root
